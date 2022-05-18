@@ -1,0 +1,61 @@
+<html>
+    <head>
+        <title>Helper/ToC</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+
+    </head>
+    <body>
+        <div class="w-full max-w-xs">
+            <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+                <div class="mb-4">
+                    <label for="start" class="block text-gray-700 text-sm font-bold mb-2">User-generated string:</label>
+                    <input type="text" id="start" name="start" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                    <button type="button" onclick="replaceSpace()" class="mt-2 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Generate ToC</button>
+                </div>
+                <div class="mb-4">
+                    <div id="result-wrap" style="display:none;">
+                        <p id="result"></p>
+                        <button onclick="copy()" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Copy text</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+            <script> 
+            const replaceSpace = () =>{
+                let str = document.getElementById("start").value; 
+                var x = document.getElementById("result-wrap");
+
+                x.style.display = "none";
+
+                str = str.trim();
+                str = str.replace("'", " ");
+                str = str.replace(/\s+/g, '-');
+
+                if(str.charAt(str.length-1) == '-') {
+                    str = str.slice(0, -1);
+                }
+
+                
+                // show copy button after results
+                if (x.style.display === "none") {
+                    x.style.display = "block";                     
+                } else {
+                    x.style.display = "none";
+                }
+
+
+                document.getElementById("result").innerHTML = str;
+            }
+
+            // copy to the clipboard
+            const copy = () =>{
+                
+                const cb = navigator.clipboard;
+                const paragraph = document.querySelector('p');
+                cb.writeText(paragraph.innerText).then(() => alert('Text copied'));
+            }
+            </script>
+    </body>
+</html>
