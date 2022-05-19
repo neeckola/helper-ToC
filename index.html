@@ -27,16 +27,24 @@
 
                 x.style.display = "none";
 
+                // check if # is in str w/o first char and delete it
+                // NOT GREAT BUT WORKS BASICS -> REDO
+                if(str.indexOf('#', 0)) str = str.replace("#", "");
+
+                // check if length>50 and abort
+                if(str.length > 50) return false;
+
                 str = str.trim();
                 str = str.replace("'", " ");
                 str = str.replace(/\s+/g, '-');
 
+                // delete leftover '-' at the end if we had to delete '
                 if(str.charAt(str.length-1) == '-') {
                     str = str.slice(0, -1);
                 }
 
-                // show copy button after results
-                if (x.style.display === "none") {
+                // show copy button after results if str is not empty
+                if(x.style.display === "none" && str) {
                     x.style.display = "block";    
                 }                 
 
