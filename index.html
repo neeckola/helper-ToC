@@ -16,6 +16,7 @@
                     <div id="result-wrap" style="display:none;">
                         <p id="result"></p>
                         <button onclick="copy()" class="mt-2 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Copy text</button>
+                        <button onclick="addHash()" class="mt-2 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Add #</button>
                     </div>
                 </div>
             </div>
@@ -37,10 +38,8 @@
 
                 // show copy button after results
                 if (x.style.display === "none") {
-                    x.style.display = "block";                     
-                } else {
-                    x.style.display = "none";
-                }
+                    x.style.display = "block";    
+                }                 
 
                 document.getElementById("result").innerHTML = str;
             }
@@ -50,6 +49,19 @@
                 const cb = navigator.clipboard;
                 const paragraph = document.querySelector('p');
                 cb.writeText(paragraph.innerText).then(() => alert('Text copied'));
+            }
+
+            // add # at the beginning
+            const addHash = () =>{
+                var toHash = document.getElementById("result").innerHTML;
+
+                // dont add if # is at first position already
+                if(toHash.charAt(0) != '#') {
+                    toHash = "#" + toHash;
+                }
+
+                document.getElementById("result").innerHTML = toHash;
+
             }
         </script>
     </body>
