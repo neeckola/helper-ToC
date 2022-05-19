@@ -76,7 +76,6 @@
             // global fields
             var results = document.getElementById("result-wrap");
 
-
             // FOR ToC conversion - string-> ToC
             // not ideal but works for most of cases
             function replaceAllExceptFirst(str, search, replace) {
@@ -92,7 +91,13 @@
                 let str = document.getElementById("startSlug").value; 
 
                 results.style.display = "none";
-                convertToSlug(str);
+
+                str = convertToSlug(str);
+
+                // delete leftover - at the end if we had to delete '
+                if(str.charAt(str.length-1) == '-') {
+                    str = str.slice(0, -1);
+                }
 
                 // show copy button after results if str is not empty
                 if(results.style.display === "none" && str) {
