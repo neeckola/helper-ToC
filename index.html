@@ -79,9 +79,15 @@
         </div>
         
         <script> 
+            // FOR Toc
             // not ideal but works for most of cases
             function replaceAllExceptFirst(str, search, replace) {
                 return str.split(search).reduce((prev, curr, i) => prev + (i == 1 ? search : replace) + curr);
+            }
+
+            // string -> slug
+            function convertToSlug(str) {
+                return str.toLowerCase().replace(/ /g, '-').replace(/[^\w-]+/g, '');
             }
 
             const fixToC = () =>{
