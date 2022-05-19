@@ -28,11 +28,11 @@
 
             const replaceSpace = () =>{
                 let str = document.getElementById("start").value; 
-                var x = document.getElementById("result-wrap");
+                var results = document.getElementById("result-wrap");
 
-                x.style.display = "none";
+                results.style.display = "none";
 
-                // check if # is in str (dont look first char) and delete it
+                // check if # is in str (don't look first char) and delete it
                 str = replaceAllExceptFirst(str, '#', '');
 
                 // check if length>50 and abort
@@ -42,14 +42,14 @@
                 str = str.replace("'", "");
                 str = str.replace(/\s+/g, '-');
 
-                // delete leftover '-' at the end if we had to delete '
+                // delete leftover - at the end if we had to delete '
                 if(str.charAt(str.length-1) == '-') {
                     str = str.slice(0, -1);
                 }
 
                 // show copy button after results if str is not empty
-                if(x.style.display === "none" && str) {
-                    x.style.display = "block";    
+                if(results.style.display === "none" && str) {
+                    results.style.display = "block";    
                 }                 
 
                 document.getElementById("result").innerHTML = str;
