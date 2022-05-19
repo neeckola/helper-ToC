@@ -20,9 +20,7 @@
                 </div>
             </div>
         </div>
-
-
-            <script> 
+        <script> 
             const replaceSpace = () =>{
                 let str = document.getElementById("start").value; 
                 var x = document.getElementById("result-wrap");
@@ -37,7 +35,6 @@
                     str = str.slice(0, -1);
                 }
 
-                
                 // show copy button after results
                 if (x.style.display === "none") {
                     x.style.display = "block";                     
@@ -45,17 +42,15 @@
                     x.style.display = "none";
                 }
 
-
                 document.getElementById("result").innerHTML = str;
             }
 
             // copy to the clipboard
             const copy = () =>{
-                
                 const cb = navigator.clipboard;
                 const paragraph = document.querySelector('p');
                 cb.writeText(paragraph.innerText).then(() => alert('Text copied'));
             }
-            </script>
+        </script>
     </body>
 </html>
