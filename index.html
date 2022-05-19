@@ -1,6 +1,6 @@
 <html>
     <head>
-        <title>Helper/ToC</title>
+        <title>Helper -> ToC</title>
         <script src="https://cdn.tailwindcss.com"></script>
     </head>
     <body class="bg-slate-200">
@@ -21,21 +21,25 @@
             </div>
         </div>
         <script> 
+            // not ideal but works for most of cases
+            function replaceAllExceptFirst(str, search, replace) {
+                return str.split(search).reduce((prev, curr, i) => prev + (i == 1 ? search : replace) + curr);
+            }
+
             const replaceSpace = () =>{
                 let str = document.getElementById("start").value; 
                 var x = document.getElementById("result-wrap");
 
                 x.style.display = "none";
 
-                // check if # is in str w/o first char and delete it
-                // NOT GREAT BUT WORKS BASICS -> REDO
-                if(str.indexOf('#', 0)) str = str.replace("#", "");
+                // check if # is in str (dont look first char) and delete it
+                str = replaceAllExceptFirst(str, '#', '');
 
                 // check if length>50 and abort
                 if(str.length > 50) return false;
 
                 str = str.trim();
-                str = str.replace("'", " ");
+                str = str.replace("'", "");
                 str = str.replace(/\s+/g, '-');
 
                 // delete leftover '-' at the end if we had to delete '
