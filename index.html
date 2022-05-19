@@ -9,24 +9,18 @@
             <div class="basis-1/3 bg-white shadow-md rounded px-8 pt-6 pb-8 m-4">
                 <p class="bg-pink-100 rounded p-2 mb-2 font-bold">String -> ToC</p>
                 <div class="mb-4">
-                    <label for="start" class="block text-gray-700 text-sm font-semibold mb-2">String to convert:</label>
-                    <input type="text" id="start" name="start" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                    <label for="startToC" class="block text-gray-700 text-sm font-semibold mb-2">String to convert:</label>
+                    <input type="text" id="startToC" name="startToC" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
                     <button type="button" onclick="fixToC()" class="mt-2 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Generate ToC</button>
                 </div>
-                <div class="mb-4">
-                    <div id="result-wrap" style="display:none;">
-                        <p id="result"></p>
-                        <button onclick="copy()" class="mt-2 bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Copy</button>
-                        <button onclick="addHash()" class="mt-2 bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Add #</button>
-                    </div>
-                </div>
+                
             </div>
             <div class="basis-1/3 bg-white shadow-md rounded px-8 pt-6 pb-8 m-4">
                 <p class="bg-pink-100 rounded p-2 mb-2 font-bold">String -> Slug</p>
                 <div class="mb-4">
-                    <label for="start" class="block text-gray-700 text-sm font-semibold mb-2">String to convert:</label>
-                    <input type="text" id="start" name="start" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" disabled>
-                    <button type="button" onclick="" class="mt-2 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" disabled>Generate Slug</button>
+                    <label for="startSlug" class="block text-gray-700 text-sm font-semibold mb-2">String to convert:</label>
+                    <input type="text" id="startSlug" name="startSlug" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                    <button type="button" onclick="fixSlug()" class="mt-2 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Generate Slug</button>
                 </div>
             </div>
             <div class="basis-1/3 bg-white shadow-md rounded px-8 pt-6 pb-8 m-4">
@@ -55,7 +49,7 @@
                 <div class="mb-4">
                     <p>Work in progress:</p>
                     <p class="font-bold text-green-500">
-                    <svg class="inline w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path></svg>String -> ToC works in its own section.</p>
+                    <svg class="inline w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path></svg>String -> ToC works in main (this) field.</p>
                     <p class="font-bold text-red-500"><svg class="inline w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636"></path></svg>String -> Slug doesn't work yet.</p>
                     <p class="font-bold text-red-500"><svg class="inline w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636"></path></svg>String -> LowerCase doesn't work yet.</p>
                     <p class="font-bold text-red-500"><svg class="inline w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636"></path></svg>String -> noNumbers doesn't work yet.</p>
@@ -79,7 +73,11 @@
         </div>
         
         <script> 
-            // FOR Toc
+            // global fields
+            var results = document.getElementById("result-wrap");
+
+
+            // FOR ToC conversion - string-> ToC
             // not ideal but works for most of cases
             function replaceAllExceptFirst(str, search, replace) {
                 return str.split(search).reduce((prev, curr, i) => prev + (i == 1 ? search : replace) + curr);
@@ -91,8 +89,7 @@
             }
 
             const fixToC = () =>{
-                let str = document.getElementById("start").value; 
-                var results = document.getElementById("result-wrap");
+                let str = document.getElementById("startToC").value; 
 
                 results.style.display = "none";
 
@@ -119,13 +116,6 @@
                 document.getElementById("result").innerHTML = str;
             }
 
-            // copy to the clipboard
-            const copy = () =>{
-                const cb = navigator.clipboard;
-                const paragraph = document.querySelector('p');
-                cb.writeText(paragraph.innerText);
-            }
-
             // add # at the beginning
             const addHash = () =>{
                 var toHash = document.getElementById("result").innerHTML;
@@ -136,6 +126,13 @@
                 }
 
                 document.getElementById("result").innerHTML = toHash;
+            }
+
+            // copy to the clipboard
+            const copy = () =>{
+                const cb = navigator.clipboard;
+                const paragraph = document.querySelector('#result');
+                cb.writeText(paragraph.innerText);
             }
         </script>
     </body>
