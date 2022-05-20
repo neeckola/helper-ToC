@@ -73,17 +73,15 @@
         </div>
 
 
-        <!-- COLUMN 2 -->
+        <!-- COLUMN 2 
         <div class="flex flex-row justify-between">
             <div class="basis-1/3 bg-white shadow-md rounded px-8 pt-6 pb-8 m-4">
                 <p class="bg-pink-100 rounded p-2 mb-2 font-bold">Nikola -> notes</p>
                 <div class="mb-4">
-                    <p>Refactor <code>if(str.charAt(str.length-1) == '-') {
-                        str = str.slice(0, -1);
-                    }</code></p>
+                    
                 </div>
             </div>
-            </div>
+        </div>-->
             
         
         <script> 
@@ -98,7 +96,7 @@
 
             // string -> slug
             function convertToSlug(str) {
-                return str.toLowerCase().replace(/ /g, '-').replace(/[^\w-]+/g, '');
+                return str.toLowerCase().trim().replace("'", "").replace(/\s+/g, '-');
             }
 
             const fixSlug = () =>{
@@ -132,9 +130,7 @@
                 // check if length>50 and abort
                 if(str.length > 50) return false;
 
-                str = str.trim();
-                str = str.replace("'", "");
-                str = str.replace(/\s+/g, '-');
+                str = convertToSlug(str);
 
                 // delete leftover - at the end if we had to delete '
                 if(str.charAt(str.length-1) == '-') {
