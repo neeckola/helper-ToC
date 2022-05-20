@@ -81,7 +81,7 @@
             // global fields
             var results = document.getElementById("result-wrap");
 
-            // FOR ToC conversion - string-> ToC
+            // for ToC conversion - string-> ToC
             // not ideal but works for most of cases
             function replaceAllExceptFirst(str, search, replace) {
                 return str.split(search).reduce((prev, curr, i) => prev + (i == 1 ? search : replace) + curr);
@@ -149,8 +149,8 @@
                 // show copy button after results if str is not empty
                 if(results.style.display === "none" && str) {
                     results.style.display = "block";    
-                }                 
-
+                }          
+                
                 document.getElementById("result").innerHTML = str;
             }
 
